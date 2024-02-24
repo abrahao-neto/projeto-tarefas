@@ -1,0 +1,117 @@
+<div class="mt-3">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center">
+            <h5>Cadastro de conta de usuário</h5>
+            <p>Preencha o formulário para criar sua conta.</p>
+            <hr />
+          </div>
+
+          <div class="text-success text-center">
+            <strong>{{mensagemSucesso}}</strong>
+          </div>
+
+
+          <div class="text-danger text-center">
+            <strong>{{mensagemErro}}</strong>
+          </div>
+
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-2">
+              <label>Nome do usuário:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Digite o email aqui."
+                formControlName="nome"
+              />
+              <div
+                class="text-danger"
+                *ngIf="f['nome'].touched && f['nome'].invalid"
+              >
+                Por favor, informe um nome com 8 a 100 caracteres.
+              </div>
+            </div>
+
+
+            <div class="mb-2">
+              <label>Email do usuário:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Digite o email aqui."
+                formControlName="email"
+              />
+              <div
+                class="text-danger"
+                *ngIf="f['email'].touched && f['email'].invalid"
+              >
+                Por favor, informe um email válido.
+              </div>
+            </div>
+
+
+            <div class="mb-2">
+              <label>Senha do usuário:</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Digite a senha aqui."
+                formControlName="senha"
+              />
+              <div
+                class="text-danger"
+                *ngIf="f['senha'].touched && f['senha'].invalid"
+              >
+                Por favor, informe uma senha com pelo menos 8 caracteres.
+              </div>
+            </div>
+
+
+
+            <div class="mb-2">
+                <label>Confirmação da senha:</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Digite a senha aqui."
+                  formControlName="senhaConfirmacao"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="f['senhaConfirmacao'].touched && f['senhaConfirmacao'].invalid"
+                >
+                  Por favor, confirme a sua senha.
+                </div>
+              </div>
+
+
+            <div class="mb-2 d-grid">
+              <input
+                type="submit"
+                class="btn btn-primary"
+                value="Realizar cadastro"
+                [disabled]="form.invalid"
+              />
+            </div>
+          </form>
+
+
+          <div class="mb-2 d-grid">
+            <a href="/pages/autenticar-usuario" class="btn btn-light">
+              Já possui conta? <strong>Acesse aqui!</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

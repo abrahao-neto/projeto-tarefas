@@ -1,0 +1,65 @@
+<div class="container mt-3 mb-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Cadastro de tarefas da Agenda</h4>
+          <p>Preencha os campos para incluir uma tarefa.</p>
+        </div>
+
+        <div class="mt-2 mb-2">
+          <strong>{{ mensagem }}</strong>
+        </div>
+
+        <div class="col-md-12">
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="mb-2">
+              <label>Nome da tarefa:</label>
+              <input type="text" class="form-control" placeholder="Digite aqui" formControlName="nome" />
+              <div class="text-danger" *ngIf="f['nome'].touched && f['nome'].invalid">
+                Por favor, informe o nome da tarefa.
+              </div>
+            </div>
+
+
+            <div class="mb-2">
+              <label>Descrição da tarefa:</label>
+              <textarea class="form-control" formControlName="descricao"></textarea>
+              <div class="text-danger" *ngIf="f['descricao'].touched && f['descricao'].invalid">
+                Por favor, informe a descrição da tarefa.
+              </div>
+            </div>
+
+
+            <div class="mb-2">
+              <label>Data e hora da tarefa:</label>
+              <input type="datetime-local" class="form-control" formControlName="dataHora" />
+              <div class="text-danger" *ngIf="f['dataHora'].touched && f['dataHora'].invalid">
+                Por favor, informe a data e hora da tarefa.
+              </div>
+            </div>
+
+
+            <div class="mb-2">
+              <label>Selecione a categoria:</label>
+              <select class="form-select" formControlName="categoriaId">
+                <option value="">Escolha uma opção</option>
+                <option *ngFor="let item of categorias" value="{{ item.id }}">
+                  {{ item.nome }} - {{ item.descricao }}
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="f['categoriaId'].touched && f['categoriaId'].invalid">
+                Por favor, selecione o ID da categoria.
+              </div>
+            </div>
+
+
+            <div class="mb-2">
+              <input type="submit" class="btn btn-success" value="Cadastrar Tarefa" [disabled]="form.invalid" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
